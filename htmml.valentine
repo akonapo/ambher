@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Fun</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        h1 {
+            color: red;
+            font-size: 2rem;
+            padding: 20px;
+        }
+        .buttons {
+            position: relative;
+            margin-top: 30px;
+        }
+        .button {
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: white;
+            color: red;
+            position: absolute;
+        }
+        .balloons {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            animation: float 3s infinite ease-in-out;
+            white-space: nowrap;
+        }
+        @keyframes float {
+            0% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-30px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .button {
+                font-size: 18px;
+                padding: 12px 30px;
+            }
+            .balloons {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💖 Will You Be My Valentine? 💖</h1>
+
+    <div class="buttons">
+        <button class="button yes" onclick="alert('Yay! ❤️')">Yes</button>
+        <button class="button no" id="noButton">No</button>
+    </div>
+
+    <div class="balloons">🎈🎈🎈🎈🎈</div>
+
+    <script>
+        const noButton = document.getElementById("noButton");
+
+        noButton.addEventListener("touchstart", moveButton); // For mobile touch
+        noButton.addEventListener("mouseover", moveButton); // For desktop hover
+
+        function moveButton() {
+            let maxX = window.innerWidth - noButton.offsetWidth - 20;
+            let maxY = window.innerHeight - noButton.offsetHeight - 20;
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
+
+</body>
+</html>
