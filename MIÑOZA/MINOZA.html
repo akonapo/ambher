@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambher Mark Miñoza Portfolio</title>
+  <meta name="description" content="Portfolio of Ambher Mark Miñoza, a college student from Cebu passionate about technology and web development.">
+  <meta name="theme-color" content="#0f172a">
+  <meta property="og:title" content="Ambher Mark Miñoza - Portfolio">
+  <meta property="og:description" content="College student from Cebu passionate about technology and web development.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --heading: #ffffff;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --card: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(148, 163, 184, 0.2);
+      --chip: rgba(148, 163, 184, 0.18);
+      --shadow: 0 35px 65px rgba(8, 15, 37, 0.7);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg2: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --heading: #0f172a;
+      --accent: #6366f1;
+      --accent-hover: #4338ca;
+      --card: rgba(255,255,255,0.96);
+      --card-border: rgba(15, 23, 42, 0.12);
+      --chip: rgba(99, 102, 241, 0.12);
+      --shadow: 0 30px 55px rgba(15, 23, 42, 0.18);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg) 70%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      transition: background 0.4s ease, color 0.3s ease;
+    }
+
+    .bg-waves {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(129,140,248,0.22), transparent 52%),
+        linear-gradient(
+          130deg,
+          rgba(148,163,184,0.25) 0%,
+          transparent 28%,
+          transparent 72%,
+          rgba(148,163,184,0.18) 100%
+        );
+      background-size: 130% 130%, 130% 130%, 100% 100%;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      animation: waveShift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes waveShift {
+      0% {
+        background-position: 0% 0%, 100% 0%, 0% 0%;
+      }
+      50% {
+        background-position: 10% 15%, 90% 5%, 10% 10%;
+      }
+      100% {
+        background-position: 0% 30%, 100% 10%, 0% 20%;
+      }
+    }
+
+    .container {
+      width: min(900px, 100%);
+      background: var(--card);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      padding: 48px 48px 40px;
+      text-align: center;
+      position: relative;
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+      background: #000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .headline {
+      color: var(--heading);
+      font-size: 2.1rem;
+      margin-bottom: 32px;
+    }
+
+    .avatar {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #18181a;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.55);
+      margin-bottom: 18px;
+    }
+
+    .name {
+      font-size: 2.4rem;
+      color: var(--heading);
+      margin: 12px 0 4px;
+    }
+
+    .details {
+      color: var(--muted);
+      margin: 4px 0;
+      font-size: 1.1rem;
+    }
+
+    .actions {
+      margin: 26px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 12px 30px rgba(29,139,253,0.35);
+      transition: transform 0.1s ease, background 0.2s ease;
+    }
+
+    .hero-btn:nth-child(2) {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .social {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.45);
+    }
+
+    .social a:hover {
+      background: var(--accent);
+      color: #0f172a;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.65);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(14,165,233,0.35);
+      transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(14,165,233,0.45);
+      background: var(--accent-hover);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid rgba(255,255,255,0.6);
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀️ Light Mode</button>
+  <div class="bg-waves" aria-hidden="true"></div>
+  <main id="main" class="container" role="main">
+    <p class="headline">Portfolio</p>
+    <img class="avatar" src="pic.jpg" alt="Portrait of Ambher Mark Miñoza" loading="lazy">
+    <h1 class="name">Ambher Mark Miñoza</h1>
+    <p class="details">ambhermarkminoza@gmail.com</p>
+    <p class="details">College Student · Cebu, Philippines</p>
+
+    <div class="actions">
+      <a class="hero-btn" href="baozi.html" aria-label="Go to Get to know me page">Get to know me</a>
+      <a class="hero-btn" href="mimi.html" aria-label="Go to My Projects page">My Projects</a>
+    </div>
+
+    <div class="social" aria-label="Social links">
+      <a href="https://www.facebook.com/ambhermark.minoza" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://www.instagram.com/martini.blue._/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </main>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', storedTheme);
+    updateThemeButton(storedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeButton(newTheme);
+    });
+
+    function updateThemeButton(theme) {
+      themeToggle.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+  </script>
+</body>
+</html>

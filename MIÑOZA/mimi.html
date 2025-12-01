@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects - Ambher Mark Miñoza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="My Projects by Ambher Mark Miñoza.">
+  <meta name="theme-color" content="#0f172a">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --card: rgba(15, 23, 42, 0.85);
+      --panel: rgba(15, 23, 42, 0.7);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --shadow: 0 35px 65px rgba(8, 15, 37, 0.7);
+      --card-border: rgba(148, 163, 184, 0.25);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg2: #e2e8f0;
+      --card: rgba(255,255,255,0.96);
+      --panel: rgba(255,255,255,0.98);
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #6366f1;
+      --accent-hover: #4338ca;
+      --shadow: 0 30px 55px rgba(15, 23, 42, 0.18);
+      --card-border: rgba(15,23,42,0.12);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg) 70%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      transition: background 0.4s ease, color 0.3s ease;
+    }
+
+    .bg-waves {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(129,140,248,0.22), transparent 52%),
+        linear-gradient(
+          130deg,
+          rgba(148,163,184,0.25) 0%,
+          transparent 28%,
+          transparent 72%,
+          rgba(148,163,184,0.18) 100%
+        );
+      background-size: 130% 130%, 130% 130%, 100% 100%;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      animation: waveShift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes waveShift {
+      0% {
+        background-position: 0% 0%, 100% 0%, 0% 0%;
+      }
+      50% {
+        background-position: 10% 15%, 90% 5%, 10% 10%;
+      }
+      100% {
+        background-position: 0% 30%, 100% 10%, 0% 20%;
+      }
+    }
+
+    .container {
+      width: min(920px, 100%);
+      background: var(--card);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      padding: 48px 44px 40px;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0 0 32px 0;
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: left;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .project-card h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.8rem;
+      color: var(--text);
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #0f172a;
+      background: var(--accent);
+      min-width: 140px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(29,139,253,0.35);
+      transition: transform 0.1s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.25);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .actions {
+      margin-top: 36px;
+    }
+
+    .actions .btn {
+      min-width: 0;
+      padding: 12px 28px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(14,165,233,0.35);
+      transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(14,165,233,0.45);
+      background: var(--accent-hover);
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☀️ Light Mode</button>
+  <div class="bg-waves" aria-hidden="true"></div>
+  <main class="container" role="main">
+    <h1>MY PROJECTS</h1>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <h2>Rentify</h2>
+        <p>
+          A web application for landlords to manage rental properties. Built with HTML, CSS, JavaScript, 
+          and Firebase for authentication and data management. Features include property listing, 
+          tenant management, and secure authentication.
+        </p>
+        <div class="project-actions">
+          <a href="https://rentify-landlord.netlify.app/login.html" class="btn" target="_blank" rel="noopener noreferrer">View Site</a>
+          <a href="https://github.com/akonapo/rentifyy.git" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="MINOZA.html">Back to Home</a>
+    </div>
+  </main>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', storedTheme);
+    updateThemeButton(storedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeButton(newTheme);
+    });
+
+    function updateThemeButton(theme) {
+      themeToggle.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+  </script>
+</body>
+</html>
+
+
